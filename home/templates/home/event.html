@@ -1,0 +1,30 @@
+{% extends "home/layout.html" %}
+{% block title %}
+{{ event.name|safe }}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="card m-1">
+        <h1 class="card-header text-center font-weight-bold">{{ event.name|upper|safe }}</h1>
+        <div class="card-body img-thumbnail">
+            <img class="card-img-top" src="{{ event.image.url }}" alt="Card image cap">
+            <hr>
+            <h5 class="card-title text-center font-weight-bold m-2">DESCRIPTION</h5>
+            <hr>
+            <p>{{ event.description|safe }}</p>
+            <hr>
+            <h5 class="card-title text-center font-weight-bold m-2">RULES AND REGULATIONS</h5>
+            <hr>
+            <p>{{ event.rules|safe }}</p>
+        </div>
+    </div>
+    <div class="card m-1" id="register">
+        <div class="card-header">
+            <h2 class="text-center font-weight-bold card-title">REGISTER</h2>
+        </div>
+        <div class="card-body">
+            {{ event.registrationform|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

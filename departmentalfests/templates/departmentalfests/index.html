@@ -1,0 +1,47 @@
+{% extends "home/layout.html" %}
+{% block title %}
+Departmental Fests
+{% endblock title %}
+{% block body %}
+<div class="jumbotron d-flex justify-content-center m-1 p-3">
+    <h1 class="display-2 font-weight-bold">DEPARTMENTAL FESTS</h1>
+</div>
+<div class="container">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active m-1 img-thumbnail img-responsive">
+            <img class="daysCarousel" src="{{ departmentalfests.imageOne.url }}" class="d-block w-100 img-fluid" alt="...">
+          </div>
+          <div class="carousel-item m-1 img-thumbnail img-responsive">
+            <img class="daysCarousel" src="{{ departmentalfests.imageTwo.url }}" class="d-block w-100 img-fluid" alt="...">
+          </div>
+          <div class="carousel-item m-1 img-thumbnail img-responsive">
+            <img class="daysCarousel" src="{{ departmentalfests.imageThree.url }}" class="d-block w-100 img-fluid" alt="...">
+          </div>
+        </div>
+      </div>
+</div>
+<div class="container p-4 m-0">
+    <h1 class="text-center">What Are Departmental Fest? </h1>
+    <p>{{ departmentalfests.description|safe }}</p>
+</div>
+<div class="card m-1">
+    <h1 class="card-header text-center font-weight-bold">Departments</h1>
+    <div class="card-body">
+        <div class="row">
+            {% for department in departments %}
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div class="card text-center img-thumbnail m-1" style="width: 30rem;">
+                    <img src="{{ department.imageOne.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <a href="{% url 'departmentalfests:department' department.name %}"><h5 class="card-title">{{ department.name|safe }}</h5></a>
+                      <p class="card-text">{{ department.description|truncatewords:20|safe }}</p>
+                      <a href="{% url 'departmentalfests:department' department.name %}" class="btn btn-primary m-2">All Events</a>
+                    </div>
+                  </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+{% endblock body %}
